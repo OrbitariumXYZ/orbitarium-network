@@ -1,0 +1,206 @@
+/* Orbitarium — layout and surface styling.
+   No colour literals live here (see assets/css/tokens.css). No `ch` units.
+   Section rhythm, card radii, workbench split and easings are matched to the
+   reference build's measured values; every figure slot is rendered by the same
+   rules whether it holds a value or the absent/unconfirmed dash. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--face-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--face-text); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+p { margin: 0; }
+code { overflow-wrap: anywhere; }
+
+.shell { width: 100%; max-width: var(--shell-max); margin-inline: auto; padding-inline: 1.5rem; }
+
+/* ---------- header ---------- */
+.masthead {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--paper) 82%, transparent);
+  backdrop-filter: blur(12px) saturate(120%);
+  border-bottom: 1px solid var(--line);
+}
+.masthead .shell { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; }
+.brand { display: flex; align-items: center; gap: 0.6rem; min-height: var(--tap); min-width: var(--tap); font-family: var(--face-text); font-size: 1.15rem; letter-spacing: -0.01em; }
+.brand img { width: 26px; height: 26px; }
+.nav { display: flex; align-items: center; gap: 0.25rem; }
+.nav a {
+  min-height: var(--tap); display: inline-flex; align-items: center; padding-inline: 0.75rem;
+  font-size: 0.9rem; color: var(--ink-3); border-radius: var(--r-md);
+  transition: color var(--t-fast) var(--ease-io), background-color var(--t-fast) var(--ease-io);
+}
+.nav a[aria-current="page"] { color: var(--ink); }
+.nav a:hover { color: var(--ink); background: var(--paper-2); }
+.nav-sep { width: 1px; height: 1.5rem; background: var(--line); margin-inline: 0.5rem; }
+.social { display: flex; align-items: center; gap: 0.15rem; }
+/* Inert social control: no href in the markup until the record is stated + verified.
+   Rendered as a non-interactive span so there is nothing to click. */
+.social [data-social] {
+  width: var(--tap); height: var(--tap); display: inline-grid; place-items: center;
+  color: var(--ink-3); border-radius: var(--r-md);
+}
+.social [data-social][data-state="stated"] { color: var(--ink); cursor: pointer; }
+.social [data-social][data-state="stated"]:hover { background: var(--paper-2); }
+.social [data-social]:not([data-state="stated"]) { opacity: 0.4; }
+.social svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(3.5rem, 9vw, 6.5rem) 2.5rem; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); max-width: 46rem; }
+.hero .lede { margin-top: 1.1rem; font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--ink-2); max-width: 34rem; }
+.hero .marks { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; font-size: 0.9rem; color: var(--ink-3); }
+.hero .marks span::before { content: "— "; color: var(--bronze-400); }
+
+/* contract-address slot: sits directly under the tagline, large, mono, click-to-copy.
+   Inert (no copy handler bound, no href) until the contract_address record is stated. */
+.ca {
+  margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 0.9rem 1.1rem; border: 1px solid var(--line-strong); border-radius: var(--r-xl);
+  background: var(--paper-2); max-width: 100%;
+}
+.ca-value {
+  font-family: var(--face-mono); font-size: clamp(0.95rem, 2.6vw, 1.35rem);
+  letter-spacing: 0.01em; word-break: break-all; color: var(--ink);
+}
+.ca[data-state="absent"] .ca-value, .ca[data-state="unconfirmed"] .ca-value { color: var(--slot-idle); }
+.ca-copy {
+  min-height: var(--tap); min-width: var(--tap); padding-inline: 0.75rem;
+  border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper);
+  font-family: var(--face-ui); font-size: 0.8rem; color: var(--ink-2); cursor: pointer;
+  transition: transform var(--t-fast) var(--ease-strong), background-color var(--t-fast) var(--ease-io);
+}
+.ca-copy:active { transform: scale(0.97); }
+.ca[data-state="absent"] .ca-copy, .ca[data-state="unconfirmed"] .ca-copy { opacity: 0.4; cursor: not-allowed; }
+.ca-copy[data-copied="1"] { background: var(--bronze-200); }
+
+/* ---------- generic section ---------- */
+.band { padding-block: clamp(3rem, 7vw, 3.5rem); border-top: 1px solid var(--line); }
+.band > .shell > h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 1.4rem; }
+.band .sub { color: var(--ink-2); max-width: 40rem; margin-bottom: 1.75rem; }
+
+/* dash + state word — same size/family/weight as a filled value would be */
+.slot { color: var(--slot-idle); font-variant-numeric: tabular-nums; }
+.slot .word { font-size: 0.75em; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bronze-600); margin-left: 0.4rem; }
+.slot .asof { display: block; font-size: 0.7rem; color: var(--ink-3); margin-top: 0.2rem; letter-spacing: 0.02em; }
+
+/* ---------- workbench (one key / same routes) ---------- */
+.workbench {
+  border: 1px solid var(--line-strong); border-radius: 20px; overflow: hidden;
+  display: grid; grid-template-columns: 0.85fr 1.15fr;
+  background: var(--paper-2);
+  box-shadow: inset 0 1px color-mix(in oklab, var(--paper) 85%, transparent), 0 18px 50px -35px color-mix(in oklab, var(--bronze-800) 30%, transparent);
+}
+.workbench .req { padding: 24px; border-right: 1px solid var(--line); min-width: 0; }
+.workbench .res { padding: 20px 24px; min-width: 0; background: color-mix(in oklab, var(--paper) 55%, transparent); }
+.workbench .tag { font-size: 12px; color: var(--ink-3); }
+.workbench .prompt { margin: 12px 0 24px; font-family: var(--face-text); font-size: clamp(1.35rem, 2.6vw, 1.85rem); line-height: 1.4; }
+.workbench .keyrow { display: flex; align-items: center; gap: 10px; }
+.workbench .keyrow code { flex: 1; min-width: 0; font-family: var(--face-mono); font-size: 12px; color: var(--bronze-700); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.workbench .snippet { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-3); }
+.workbench .snippet summary { display: inline-flex; align-items: center; min-height: var(--tap); width: fit-content; cursor: pointer; }
+.workbench .snippet pre { margin-top: 12px; overflow-x: auto; font-family: var(--face-mono); font-size: 10px; line-height: 1.8; color: var(--bronze-700); }
+.workbench .answer { margin: 16px 0; font-size: 16px; line-height: 1.7; color: var(--ink-2); min-height: 3.2rem; }
+.routes-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.routes-tabs button {
+  min-height: var(--tap); padding-inline: 0.75rem; font-family: var(--face-ui); font-size: 12px;
+  color: var(--ink-3); background: transparent; border: 1px solid var(--line); border-radius: var(--r-md);
+  cursor: pointer; transition: color var(--t-fast) var(--ease-io), border-color var(--t-fast) var(--ease-io);
+}
+.routes-tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--line-strong); background: var(--paper); }
+.prices { display: grid; grid-template-columns: 1fr 32px 1fr; align-items: center; gap: 12px; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+.prices .cost { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.prices .cost span { font-size: 12px; color: var(--ink-3); }
+.prices .cost strong { font-family: var(--face-text); font-variant-numeric: tabular-nums; font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 500; }
+.prices .arrow { color: var(--ink-3); font-size: 24px; text-align: center; }
+.savings { margin-top: 14px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper-2); font-size: 13px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+/* ---------- deposit preview ---------- */
+.preview-card { border: 1px solid var(--line-strong); border-radius: 20px; padding: 1.75rem; background: var(--paper-2); }
+.preview-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.25rem; font-family: var(--face-text); font-size: clamp(1.5rem, 4vw, 2.4rem); }
+.preview-row .swap { color: var(--ink-3); font-size: 0.7em; }
+.preview-note { margin-top: 0.75rem; color: var(--ink-3); font-size: 0.85rem; }
+.callouts { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.callouts div { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 0.9rem; background: var(--paper); }
+.callouts h4 { margin: 0 0 0.3rem; font-family: var(--face-ui); font-size: 0.8rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--bronze-700); }
+.callouts p { font-size: 0.85rem; color: var(--ink-2); }
+
+/* ---------- tables (ladder / settlements / catalogue) ---------- */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-xl); }
+table.grid { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 30rem; }
+table.grid th, table.grid td { text-align: left; padding: 0.7rem 1rem; border-bottom: 1px solid var(--line); }
+table.grid th { font-family: var(--face-ui); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+table.grid tr:last-child td { border-bottom: 0; }
+table.grid td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--face-mono); }
+.empty-row td { color: var(--slot-idle); text-align: center; padding-block: 2rem; }
+
+/* ---------- stat tiles ---------- */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.tile { border: 1px solid var(--line); border-radius: var(--r-xl); padding: 1rem 1.1rem; background: var(--paper-2); }
+.tile .k { font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.tile .v { margin-top: 0.35rem; font-family: var(--face-text); font-size: clamp(1.4rem, 3vw, 1.9rem); font-variant-numeric: tabular-nums; }
+.tile .v.slot { color: var(--slot-idle); }
+
+/* ---------- migration ---------- */
+.mig-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.mig-tabs button { min-height: var(--tap); padding-inline: 0.85rem; font-size: 0.8rem; font-family: var(--face-ui); color: var(--ink-3); background: transparent; border: 1px solid var(--line); border-radius: var(--r-md); cursor: pointer; }
+.mig-tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--line-strong); background: var(--paper-2); }
+.mig pre { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1rem 1.15rem; background: var(--paper-2); overflow-x: auto; font-family: var(--face-mono); font-size: 0.8rem; line-height: 1.9; color: var(--ink-2); }
+
+/* ---------- FAQ ---------- */
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { min-height: var(--tap); display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; cursor: pointer; font-size: 1rem; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--bronze-600); font-size: 1.2rem; transition: transform var(--t-mid) var(--ease-strong); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .body { padding: 0 0 1.1rem; color: var(--ink-2); max-width: 44rem; }
+
+/* ---------- footer ---------- */
+.foot { border-top: 1px solid var(--line); padding-block: 2.5rem 3.5rem; color: var(--ink-3); font-size: 0.85rem; }
+.foot .shell { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+.foot a { color: var(--ink-2); }
+.foot .disc { margin-top: 1.5rem; max-width: 44rem; font-size: 0.78rem; }
+
+/* ---------- reveal ----------
+   Entrance fade, matched to the reference's fade-in (320ms / ease-out-strong, both).
+   Fires on mount, always settles visible; disabled wholesale under reduced motion. */
+@keyframes orb-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+/* No fill-mode: the element's resting state is its natural (visible) style, so a
+   throttled or skipped animation can never leave content hidden. */
+.reveal { animation: orb-fade-in var(--t-slow) var(--ease-strong); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .workbench { grid-template-columns: 1fr; }
+  .workbench .req { border-right: 0; border-bottom: 1px solid var(--line); }
+  .workbench .snippet { display: none; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .callouts { grid-template-columns: 1fr; }
+  .hero { padding-block: 3rem 2rem; }
+}
+@media (max-width: 430px) {
+  .shell { padding-inline: 1.15rem; }
+  .nav a { padding-inline: 0.5rem; font-size: 0.85rem; }
+  .nav-sep { margin-inline: 0.1rem; }
+  .brand span { display: none; }
+  .workbench .req, .workbench .res { padding: 18px; }
+  .prices .cost strong { font-size: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+:focus-visible { outline: 2px solid var(--bronze-600); outline-offset: 3px; border-radius: 2px; }

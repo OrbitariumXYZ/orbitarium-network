@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Orbitarium — prepaid model access, priced under list</title>
+<meta name="description" content="Reach the whole model roster through one credential. Fund a balance in any amount, settle on Robinhood Chain, pay under list price. Nothing recurring." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/logo-180.png" />
+<link rel="stylesheet" href="assets/css/tokens.css" />
+<link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="Orbitarium home">
+      <img src="assets/logo-64.png" alt="" width="26" height="26" />
+      <span>Orbitarium</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#fund" aria-current="page">Fund</a>
+      <a href="#roster">Roster</a>
+      <a href="#switch">Switch</a>
+      <span class="nav-sep" role="presentation"></span>
+      <span class="social">
+        <!-- social_x is stated: @OrbitariumXYZ, read logged-out 2026-09-10 (joined September 2026). -->
+        <a data-social="x" data-registry="social_x" data-state="stated"
+           href="https://x.com/OrbitariumXYZ" target="_blank" rel="me noopener"
+           aria-label="Orbitarium on X (@OrbitariumXYZ)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- Inert: social_github URL supplied 2026-09-10 returned HTTP 404 (curl, no -L). Not wired. -->
+        <span data-social="github" data-registry="social_github" data-state="unconfirmed"
+              role="img" aria-label="GitHub — repository not reachable, link disabled" title="GitHub URL returned 404 (2026-09-10)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.51 11.51 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/></svg>
+        </span>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="shell">
+      <h1 class="reveal">Prepaid model access, priced under list.</h1>
+      <p class="lede reveal">A single credential reaches the whole roster. Add funds whenever you like; nothing recurring, no floor to clear.</p>
+
+      <!-- Contract address slot: directly under the tagline, large, mono, copy on click.
+           The record is absent, so the value is the dash, the copy control is disabled,
+           and site.js binds no handler. -->
+      <div class="ca reveal" data-registry="contract_address" data-state="absent" data-asof="2026-09-10">
+        <span class="ca-value">— address not yet published</span>
+        <button type="button" class="ca-copy" aria-disabled="true" disabled>copy</button>
+      </div>
+
+      <div class="marks reveal">
+        <span>Relay overhead is metered on your own traffic</span>
+        <span>Start from any figure; whatever you don't draw keeps sitting on your account</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="fund">
+    <div class="shell">
+      <h2 class="reveal">Fund a balance</h2>
+      <p class="sub reveal">Send value in, receive spendable balance out. The conversion follows the live book; with no book connected the figures below hold their slots.</p>
+
+      <div class="preview-card reveal" data-registry="deposit_preview" data-state="absent">
+        <div class="preview-row">
+          <span>You send <span class="slot">—<span class="word">unquoted</span></span></span>
+          <span class="swap">-&gt;</span>
+          <span>Balance lands at <span class="slot">—<span class="word">unquoted</span></span></span>
+        </div>
+        <p class="preview-note">
+          Quoted live ·
+          <span class="slot">—<span class="word">unquoted</span></span> headroom
+          <span class="asof">as of 2026-09-10 — no rate feed connected</span>
+        </p>
+        <button type="button" class="ca-copy" style="margin-top:1rem" aria-disabled="true" disabled>Fund balance</button>
+      </div>
+
+      <div class="callouts reveal">
+        <div>
+          <h4>Pass-through</h4>
+          <p>Your call lands at the exact model you addressed. No rewrite, no quiet substitution for something cheaper.</p>
+        </div>
+        <div>
+          <h4>Signed by origin</h4>
+          <p>Replies return carrying the identifier and label assigned upstream, so anyone can check what served them.</p>
+        </div>
+        <div>
+          <h4>Text discarded</h4>
+          <p>We retain the route, the token tallies, the charge and the clock. The wording you send is never written down.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="reveal">One credential. Same routes. Lower bill.</h2>
+      <div class="workbench reveal" data-tabs>
+        <div class="req">
+          <p class="tag">Request</p>
+          <p class="prompt">What holds a planetarium gear train in sync?</p>
+          <div class="keyrow">
+            <span class="tag">Orbitarium credential</span>
+            <code>key-orbitarium-&bull;&bull;&bull;&bull;7x9k</code>
+          </div>
+          <details class="snippet">
+            <summary>Show call</summary>
+            <pre>const out = await client.responses.create({
+  route: '&lt;pick a route&gt;',
+  input: 'What holds a planetarium gear train in sync?',
+  stream: true,
+});</pre>
+          </details>
+        </div>
+        <div class="res">
+          <p class="tag">Response · <span class="slot" style="font-size:.75rem">idle</span></p>
+          <p class="answer">The reply lands here once a route is wired.</p>
+
+          <div role="tablist" aria-label="Routes" class="routes-tabs" data-registry="route_catalogue" data-state="absent">
+            <button role="tab" id="rt-a" aria-controls="rp-a" aria-selected="true" disabled>—&nbsp;<span class="word" style="font-size:.7em">unlisted</span></button>
+            <button role="tab" id="rt-b" aria-controls="rp-b" aria-selected="false" disabled>—&nbsp;<span class="word" style="font-size:.7em">unlisted</span></button>
+            <button role="tab" id="rt-c" aria-controls="rp-c" aria-selected="false" disabled>—&nbsp;<span class="word" style="font-size:.7em">unlisted</span></button>
+          </div>
+          <div id="rp-a" role="tabpanel" aria-labelledby="rt-a">
+            <div class="prices">
+              <span class="cost"><span>List</span><strong class="slot">—</strong></span>
+              <span class="arrow" aria-hidden="true">-&gt;</span>
+              <span class="cost"><span>Through Orbitarium</span><strong class="slot">—</strong></span>
+            </div>
+            <div class="savings">
+              <span>Spread</span>
+              <strong class="slot">—<span class="word">unpriced</span></strong>
+              <span style="margin-left:auto" class="slot">as of 2026-09-10</span>
+            </div>
+          </div>
+          <div id="rp-b" role="tabpanel" aria-labelledby="rt-b" hidden><p class="answer">No route wired.</p></div>
+          <div id="rp-c" role="tabpanel" aria-labelledby="rt-c" hidden><p class="answer">No route wired.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="reveal">Discount ladder</h2>
+      <p class="sub reveal"><span class="slot">—<span class="word">no depth</span></span> on offer right now. Rungs fill from the order book as holders release allowance.</p>
+      <div class="tbl-wrap reveal" data-registry="discount_ladder" data-state="absent">
+        <table class="grid">
+          <thead><tr><th>Tier</th><th class="num">Available</th></tr></thead>
+          <tbody>
+            <tr class="empty-row"><td colspan="2">— ladder feed not connected (2026-09-10)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="reveal">Recent settlements</h2>
+      <p class="sub reveal">The last <span data-count-of="recent_settlements" data-empty="—">—</span> balance top-ups, once the ledger feed is attached.</p>
+      <div class="tbl-wrap reveal" data-registry="recent_settlements" data-state="absent">
+        <table class="grid">
+          <thead><tr><th>Account</th><th>When</th><th class="num">Amount</th><th class="num">Tier</th></tr></thead>
+          <tbody>
+            <tr class="empty-row"><td colspan="4">— ledger feed not connected (2026-09-10)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="roster">
+    <div class="shell">
+      <h2 class="reveal">The roster, reachable from one credential, under list.</h2>
+      <p class="sub reveal"><span class="slot">—<span class="word">uncounted</span></span> routes on the sheet once the catalogue feed is attached.</p>
+      <div class="tbl-wrap reveal" data-registry="route_catalogue" data-state="absent">
+        <table class="grid">
+          <thead><tr><th>Route</th><th>Path</th><th class="num">List</th><th class="num">Through Orbitarium</th><th class="num">Spread</th></tr></thead>
+          <tbody>
+            <tr class="empty-row"><td colspan="5">— catalogue feed not connected (2026-09-10)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="reveal">Usage, laid out plainly.</h2>
+      <p class="sub reveal">Charge by day, charge by route, and the milliseconds the relay adds — read off your own calls.</p>
+      <div class="tiles reveal" data-registry="usage_readout" data-state="absent">
+        <div class="tile"><div class="k">Charged</div><div class="v slot">—</div></div>
+        <div class="tile"><div class="k">Calls</div><div class="v slot">—</div></div>
+        <div class="tile"><div class="k">Tokens</div><div class="v slot">—</div></div>
+        <div class="tile"><div class="k">Overhead</div><div class="v slot">—</div></div>
+      </div>
+      <div class="tbl-wrap reveal" style="margin-top:1rem" data-registry="usage_by_route" data-state="absent">
+        <table class="grid">
+          <thead><tr><th>Route</th><th class="num">Charged</th><th class="num">Calls</th></tr></thead>
+          <tbody><tr class="empty-row"><td colspan="3">— account telemetry not connected (2026-09-10)</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="switch">
+    <div class="shell">
+      <h2 class="reveal">Switching over takes two edits.</h2>
+      <div class="mig reveal" data-tabs>
+        <div role="tablist" aria-label="Client" class="mig-tabs">
+          <button role="tab" id="m-a" aria-controls="mp-a" aria-selected="true">Gateway env</button>
+          <button role="tab" id="m-b" aria-controls="mp-b" aria-selected="false">Node client</button>
+          <button role="tab" id="m-c" aria-controls="mp-c" aria-selected="false">Python client</button>
+        </div>
+        <div id="mp-a" role="tabpanel" aria-labelledby="m-a">
+<pre># before — your current gateway
+MODEL_BASE_URL=https://&hellip;current host&hellip;/v1
+MODEL_API_KEY=&hellip;current key&hellip;
+
+# after — Orbitarium. Same two variables.
+MODEL_BASE_URL=https://orbitarium.xyz/v1
+MODEL_API_KEY=key-orbitarium-&hellip;</pre>
+        </div>
+        <div id="mp-b" role="tabpanel" aria-labelledby="m-b" hidden>
+<pre>const client = new ModelClient({
+  baseURL: 'https://orbitarium.xyz/v1',
+  apiKey: process.env.MODEL_API_KEY, // key-orbitarium-&hellip;
+});</pre>
+        </div>
+        <div id="mp-c" role="tabpanel" aria-labelledby="m-c" hidden>
+<pre>client = ModelClient(
+    base_url="https://orbitarium.xyz/v1",
+    api_key=os.environ["MODEL_API_KEY"],  # key-orbitarium-&hellip;
+)</pre>
+        </div>
+        <p class="sub" style="margin-top:1rem">Behaviour around streaming, function calls and image input is left untouched; your route identifiers carry over unchanged.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="reveal">Settlement</h2>
+      <p class="sub reveal" data-registry="chain" data-state="stated">
+        Top-ups clear on <strong>Robinhood Chain</strong> — network id
+        <code>0x1237</code> (<span style="font-variant-numeric:tabular-nums">4663</span>).
+        RPC <code>https://rpc.mainnet.chain.robinhood.com</code>.
+        <span class="asof">stated by client, 2026-09-02 (batch-level)</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band faq">
+    <div class="shell">
+      <h2 class="reveal">Short answers.</h2>
+      <div class="reveal">
+        <details><summary>Where does the lower price come from?</summary><div class="body">Holders and allowance partners hand over capacity they are not using, below what they paid for it. Our margin is folded into the quote you see — there is no separate charge.</div></details>
+        <details><summary>Is the model the genuine one?</summary><div class="body">Yes. Orbitarium forwards each call to the route you addressed and hands the reply straight back, upstream label and identifier intact. There is no quiet substitution to a lower tier.</div></details>
+        <details><summary>Do you keep what I send?</summary><div class="body">No. The relay records billing facts only: the route, the token tallies, the charge and the clock. Wording in and wording out pass through and are not stored anywhere.</div></details>
+        <details><summary>Whose allowance covers my calls?</summary><div class="body">Either Orbitarium's own capacity or a vetted partner's paid allowance. Partner traffic runs through that partner's upstream account under its own retention terms. What is reachable depends on the route.</div></details>
+        <details><summary>What has to change in my code?</summary><div class="body">Two values: the call's base location and your Orbitarium credential. Streaming, function calls, image input and route identifiers all behave as they do now.</div></details>
+        <details><summary>Any recurring fee or floor?</summary><div class="body">Neither. Put in a modest figure and draw against it call by call. Anything left over simply waits there for next time.</div></details>
+        <details><summary>What does the relay add per call?</summary><div class="body">Your account view reports the measured relay overhead for your own traffic, call by call.</div></details>
+        <details><summary>Can a balance be cashed out?</summary><div class="body">No. Balance is a prepaid grant of access, not a stake and not convertible back to money. If a card charge misfires, reply to the receipt and the processor reverses it.</div></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <p>Balance is released by holders and allowance partners, settled on Robinhood Chain.</p>
+    <span class="social" aria-label="Elsewhere">
+      <a data-social="x" data-registry="social_x" data-state="stated"
+         href="https://x.com/OrbitariumXYZ" target="_blank" rel="me noopener"
+         aria-label="Orbitarium on X (@OrbitariumXYZ)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <span data-social="github" data-registry="social_github" data-state="unconfirmed" role="img"
+            aria-label="GitHub — repository not reachable, link disabled" title="GitHub URL returned 404 (2026-09-10)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.51 11.51 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/></svg>
+      </span>
+    </span>
+  </div>
+  <div class="shell">
+    <p class="disc">Balance is a prepaid grant of access on Orbitarium, not a claim on returns and not convertible to cash. None of this is financial guidance.</p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

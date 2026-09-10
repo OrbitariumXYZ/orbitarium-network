@@ -1,0 +1,72 @@
+/*
+  Orbitarium design tokens — the ONLY file in this repo that may contain colour literals.
+  (scripts/gates.mjs enforces this; the one other allowed file is assets/favicon.svg,
+  which is a per-pixel trace of the logo raster, not a token surface.)
+
+  PALETTE PROVENANCE
+  Every hex below was sampled from a brand asset, not chosen by eye:
+    A = brand/LOGO ORBITARIUM PNG...png   IHDR 2000x2000, 8-bit, colourtype 6 (RGBA).
+        Alpha: 83.5% fully transparent, 16.2% fully opaque, ~0.3% edge partials.
+        100% of transparent pixels carry pure-black RGB, so any downscale of this
+        asset is premultiplied (see scripts/make-assets — assets/logo-*.png, favicon.svg).
+    B = brand/LOGO ORBITARIUM JPG.jpg.jpeg  2000x2000, JPEG, no alpha — used only for
+        the paper ground, which the RGBA master knocks out.
+  Method: k-means (k=4 on B near-white for paper; k=8 on A opaque pixels for the mark),
+  each cluster centre then snapped to its nearest real pixel; that pixel's coordinate
+  is quoted. Ink is the single darkest opaque pixel in A.
+*/
+
+:root {
+  /* paper ground — asset B, k-means k=4, snapped */
+  --paper:    #faf6f3; /* centre 249.7,246.1,243.7  -> pixel (x=1478, y=0)   */
+  --paper-2:  #f7f3f0; /* centre 246.5,242.5,240.2  -> pixel (x=744,  y=0)   */
+  --paper-3:  #f1e8d7; /* centre 241.6,231.9,214.6  -> pixel (x=1434, y=431) */
+
+  /* the mark — asset A opaque pixels, k-means k=8, snapped */
+  --bronze-100: #f7f3ea; /* centre 247,243,234 -> pixel (x=1419, y=433) */
+  --bronze-200: #e9ddcb; /* centre 233,221,203 -> pixel (x=878,  y=654) */
+  --bronze-300: #d7c5ac; /* centre 215,197,172 -> pixel (x=1534, y=490) */
+  --bronze-400: #c0ab91; /* centre 192,171,145 -> pixel (x=1403, y=453) */
+  --bronze-500: #a99479; /* centre 169,148,121 -> pixel (x=1366, y=514) */
+  --bronze-600: #8f785a; /* centre 143,120,90  -> pixel (x=1263, y=591) */
+  --bronze-700: #6c5a44; /* centre 108,90,68   -> pixel (x=702,  y=958) */
+  --bronze-800: #43321d; /* centre 67,50,29    -> pixel (x=1008, y=1133) */
+
+  /* ink — darkest opaque pixel in asset A (relative luminance 14.4/255) */
+  --ink:   #170d03; /* pixel (x=1033, y=1127) — contrast on --paper = 17.9:1  */
+  --ink-2: #43321d; /* = bronze-800 — contrast on --paper = 8.9:1            */
+  --ink-3: #6c5a44; /* = bronze-700 — contrast on --paper = 6.1:1 (AA body)  */
+
+  /* hairlines — bronze-800 held behind alpha; computed, not sampled */
+  --line:        color-mix(in oklab, var(--bronze-800) 14%, transparent);
+  --line-strong: color-mix(in oklab, var(--bronze-800) 26%, transparent);
+
+  /* state ink — the dash + word shown in every slot whose fact is absent/unconfirmed.
+     Same weight and family as a real value; only the colour softens one step. */
+  --slot-idle: var(--ink-3);
+
+  /* type — self-hosting avoided; families degrade to platform equivalents */
+  --face-text: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --face-ui:   "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --face-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* scale — matched to the reference's measured rhythm (0.25rem base step) */
+  --step: 0.25rem;
+  --r-md: 0.375rem;
+  --r-lg: 0.5rem;
+  --r-xl: 0.75rem;
+  --r-2xl: 1rem;
+  --r-3xl: 1.5rem;
+  --r-pill: 3.40282e38px;
+
+  /* motion — matched easings/durations from the reference token layer */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-io:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --t-fast: 0.15s;
+  --t-mid: 0.22s;
+  --t-slow: 0.42s;
+
+  --shell-max: 64rem;
+  --tap: 44px; /* minimum interactive target */
+}

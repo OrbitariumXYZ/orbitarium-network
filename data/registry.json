@@ -1,0 +1,47 @@
+{
+  "_comment": "Every external fact is one record. state is one of: stated | absent | unconfirmed. Nothing here is hardcoded into markup; index.html slots read state/value from data- attributes that mirror this file, and scripts/gates.mjs asserts markup against it. Counts shown anywhere on the page are the length of a list in this file, never a written-in number.",
+  "generated": "2026-09-10",
+  "records": {
+    "chain": {
+      "state": "stated",
+      "source": "client statement 2026-09-02, batch-level",
+      "value": {
+        "name": "Robinhood Chain",
+        "chainIdHex": "0x1237",
+        "chainIdDec": 4663,
+        "rpc": "https://rpc.mainnet.chain.robinhood.com"
+      }
+    },
+    "contract_address": {
+      "state": "absent",
+      "source": "not provided as of 2026-09-10",
+      "value": null
+    },
+    "social_x": {
+      "state": "stated",
+      "source": "client statement 2026-09-10; handle @OrbitariumXYZ, read logged-out 2026-09-10 — joined September 2026, bio + Orbitarium.xyz link present",
+      "value": "https://x.com/OrbitariumXYZ",
+      "handle": "OrbitariumXYZ"
+    },
+    "social_github": {
+      "state": "unconfirmed",
+      "source": "client supplied https://github.com/OrbitariumXYZ/orbitarium-network on 2026-09-10; verified with curl (no -L) same day -> HTTP 404 Not Found, no redirect. URL does not resolve, so it is not wired.",
+      "attempted_url": "https://github.com/OrbitariumXYZ/orbitarium-network",
+      "value": null
+    },
+    "token_price": { "state": "absent", "source": "no market data provided", "value": null },
+    "market_value": { "state": "absent", "source": "no market data provided", "value": null },
+    "pool_depth": { "state": "absent", "source": "no market data provided", "value": null },
+    "holder_count": { "state": "absent", "source": "no on-chain index provided", "value": null },
+    "route_count": { "state": "absent", "source": "no catalogue feed provided", "value": null },
+    "settled_volume": { "state": "absent", "source": "no ledger feed provided", "value": null },
+    "added_latency": { "state": "absent", "source": "no measured telemetry provided", "value": null },
+    "headline_saving": { "state": "absent", "source": "no rate sheet provided", "value": null },
+    "deposit_preview": { "state": "absent", "source": "no live rate provided", "value": null },
+    "discount_ladder": { "state": "absent", "source": "no order book feed provided", "value": [] },
+    "recent_settlements": { "state": "absent", "source": "no ledger feed provided", "value": [] },
+    "route_catalogue": { "state": "absent", "source": "no catalogue feed provided", "value": [] },
+    "usage_readout": { "state": "absent", "source": "no account telemetry provided", "value": null },
+    "usage_by_route": { "state": "absent", "source": "no account telemetry provided", "value": [] }
+  }
+}
